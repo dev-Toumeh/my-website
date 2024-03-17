@@ -1,0 +1,33 @@
+config {
+    contentObjectExceptionHandler = 0
+}
+
+page = PAGE
+
+page {
+    10 = FLUIDTEMPLATE
+
+    10 {
+        file = EXT:mywebsite/Resources/Private/Template/Home.html
+        layoutRootPath = EXT:mywebsite/Resources/Private/Layout
+
+        variables {
+            profilePath = TEXT
+            profilePath.value = {$profilePath}
+        }
+    }
+}
+
+
+[page["uid"] == 3]
+    page.10.file = EXT:mywebsite/Resources/Private/Template/Resume.html
+[end]
+
+[page["uid"] == 4]
+    page.10.file = EXT:mywebsite/Resources/Private/Template/Projects.html
+[end]
+
+[page["uid"] == 5]
+    page.10.file = EXT:mywebsite/Resources/Private/Template/Contact.html
+[end]
+
