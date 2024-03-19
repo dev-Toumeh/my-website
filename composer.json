@@ -1,5 +1,5 @@
 {
-  "name": "naseem/mywebsite55",
+  "name": "toumeh/mywebsite",
   "description": "my Website",
   "type": "typo3-cms-extension",
   "license": "GPL-2.0-or-later",
@@ -16,5 +16,10 @@
     "typo3/cms": {
       "extension-key": "mywebsite"
     }
+  },
+  "autoload": {
+  "psr-4": {
+    "Toumeh\\MyWebsite\\": "Classes/"
   }
+}
 }
