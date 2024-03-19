@@ -9,5 +9,8 @@ ExtensionUtility::configurePlugin(
     'Index',
     [
         Toumeh\MyWebsite\Controller\HomeController::class => 'index',
+    ],
+    [
+        Toumeh\MyWebsite\Controller\HomeController::class => 'index',
     ]
 );
