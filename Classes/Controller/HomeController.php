@@ -4,37 +4,71 @@ namespace Toumeh\MyWebsite\Controller;
 
 
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extensionmanager\Controller\AbstractController;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 
-class HomeController extends ActionController
+class HomeController extends AbstractController
 {
-    CONST string TEMPLATE_PATH = __DIR__ . '/../../Resources/Private/Templates/';
-    CONST string LAYOUT_PATH = __DIR__ . '/../../Resources/Private/layouts/';
-    CONST string PARTIALS_PATH = __DIR__ . '/../../Resources/Private/partials/';
+    const string TEMPLATE_PATH = __DIR__ . '/../../Resources/Private/Templates/Home/';
+    const string LAYOUT_PATH = __DIR__ . '/../../Resources/Private/layout/Default/';
+    const string PARTIALS_PATH = __DIR__ . '/../../Resources/Private/partials/';
+
+    const array HOME_SECTIONS = ["header", "about"];
+
     public function indexAction(): ResponseInterface
     {
-//        $logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
-//        $logger->info('The listAction method has been called.');
-
-
-        return $this->htmlResponse($this->getView()->render());
-
+        //   debugUtility::debug(, 'context');
+        $view = $this->getView();
+        $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+        $page = $pageRepository->getPage(1);
+        $this->view->assign('sections', self::HOME_SECTIONS);
+        $this->view->assign('page', $page);
+        $this->view->assign('id', $this->request);
+        return $this->htmlResponse($view->render());
     }
 
+    public function resumeAction(): ResponseInterface
+    {
+        $view = $this->getView();
+        $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+        $page = $pageRepository->getPage(7);
+        $this->view->assign('sections', ['resume']);
+        $this->view->assign('page', $page);
+        $this->view->assign('id', $this->request);
+        return $this->htmlResponse($view->render());
+    }
+
+    public function contactAction(): ResponseInterface
+    {
+        $view = $this->getView();
+        $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+        $page = $pageRepository->getPage(8);
+        $this->view->assign('sections', ['contact']);
+        $this->view->assign('page', $page);
+        $this->view->assign('id', $this->request);
+        return $this->htmlResponse($view->render());
+    }
+
+    public function projectsAction(): ResponseInterface
+    {
+        $view = $this->getView();
+        $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+        $page = $pageRepository->getPage(9);
+        $this->view->assign('sections', ['projects']);
+        $this->view->assign('page', $page);
+        $this->view->assign('id', $this->request);
+        return $this->htmlResponse($view->render());
+    }
     private function getView(): StandaloneView
     {
         $view = GeneralUtility::makeInstance(StandaloneView::class);
-//        $view->setTemplateRootPaths([self::TEMPLATE_PATH]);
         $view->setTemplatePathAndFilename(self::TEMPLATE_PATH);
         $view->setLayoutRootPaths([self::LAYOUT_PATH]);
-//        $view->setPartialRootPaths([self::PARTIALS_PATH]);
-   //     $view->setTemplate('Home');
+        $view->setPartialRootPaths([self::PARTIALS_PATH]);
 
         return $view;
     }
-
 }
