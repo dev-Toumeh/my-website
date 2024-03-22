@@ -74,7 +74,7 @@ class HomeController extends AbstractController
 
         // resume view variables
         $this->view->assign('experiences', $this->qualificationRepository->getQualifications());
-        $this->view->assign('educations', $this->qualificationRepository->getQualifications(QualificationsRepository::TYPE_EDUCATION));
+        $this->view->assign('educations', $this->qualificationRepository->getQualifications(QualificationsRepository::CATEGORY_EDUCATION));
 
         $this->view->assign('skills', $this->skillsService->formatSkillsForDisplay($this->skillsRepository->getSkills()));
 
