@@ -11,7 +11,20 @@ class Qualifications extends AbstractEntity
     protected int $timeFrom;
     protected int $timeTo;
 
-    protected string $address = '';
+    protected string $city = '';
+
+    protected string $company = '';
+
+    public function getCompany(): string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(string $company): void
+    {
+        $this->company = $company;
+    }
+
     protected string $jobName = '';
     protected string $jobDescription = '';
 
@@ -45,14 +58,14 @@ class Qualifications extends AbstractEntity
         $this->timeTo = $timeTo;
     }
 
-    public function getAddress(): string
+    public function getCity(): string
     {
-        return $this->address;
+        return $this->city;
     }
 
-    public function setAddress(string $address): void
+    public function setCity(string $city): void
     {
-        $this->address = $address;
+        $this->city = $city;
     }
 
     public function getJobName(): string

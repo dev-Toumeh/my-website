@@ -8,10 +8,10 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class QualificationsRepository extends Repository
 {
     protected const string CATEGORY = "Category";
-    protected const string CATEGORY_EDUCATION = "education";
+    public const string CATEGORY_EDUCATION = "education";
     public const string CATEGORY_EXPERIENCE = "experience";
 
-    public function getQualifications($Category_type = self::CATEGORY_EDUCATION): array|QueryResultInterface
+    public function getQualifications($Category_type = self::CATEGORY_EXPERIENCE): array|QueryResultInterface
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);

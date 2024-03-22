@@ -39,10 +39,15 @@ return [
             'label' => 'Time To',
             'config' => ['type' => 'input']
         ],
-        'address' => [
-            'label' => 'address',
-            'config' => ['type' => 'text']
+        'company' => [
+            'label' => 'Company',
+            'config' => ['type' => 'input']
         ],
+        'city' => [
+            'label' => 'City',
+            'config' => ['type' => 'input']
+        ],
+
         'job_name' => [
             'label' => 'Job Name',
             'config' => ['type' => 'input']
@@ -53,6 +58,6 @@ return [
         ],
     ],
     'types' => [
-        ['showitem' => 'category, time_from, time_to, address, job_name, job_description'],
+        ['showitem' => 'category, time_from, time_to, company, city, job_name, job_description'],
     ]
 ];
