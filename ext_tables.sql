@@ -4,3 +4,19 @@ CREATE TABLE tx_mywebsite_domain_model_urls
     type  varchar(10)  DEFAULT '' NOT NULL,
     title varchar(20) DEFAULT '0' NOT NULL
 );
+
+CREATE TABLE tx_mywebsite_domain_model_qualifications
+(
+    category VARCHAR(20) DEFAULT '' NOT NULL,
+    time_from YEAR NOT NULL,
+    time_to YEAR NOT NULL,
+    address TEXT NOT NULL,
+    job_name VARCHAR(20) DEFAULT '' NOT NULL,
+    job_description TEXT NOT NULL
+);
+
+CREATE TABLE tx_mywebsite_domain_model_skills
+(
+    category VARCHAR(20) DEFAULT '' NOT NULL,
+    description VARCHAR(20) DEFAULT '' NOT NULL
+);
