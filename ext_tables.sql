@@ -19,5 +19,5 @@ CREATE TABLE tx_mywebsite_domain_model_qualifications
 CREATE TABLE tx_mywebsite_domain_model_skills
 (
     category VARCHAR(20) DEFAULT '' NOT NULL,
-    description VARCHAR(20) DEFAULT '' NOT NULL
+    name VARCHAR(20) DEFAULT '' NOT NULL
 );
