@@ -5,9 +5,7 @@ namespace Toumeh\MyWebsite\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Toumeh\MyWebsite\Domain\Repository\QualificationsRepository;
-use Toumeh\MyWebsite\Domain\Repository\SkillsRepository;
 use Toumeh\MyWebsite\Domain\Repository\UrlsRepository;
-use Toumeh\MyWebsite\Service\SkillsService;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -41,12 +39,20 @@ class HomeController extends AbstractController
 
     public function contactAction(): ResponseInterface
     {
+
+        $method = $this->request->getMethod();
+
+        // You can now check the request method and behave accordingly
+        if ($method === 'POST') {
+            return $this->htmlResponse('<h1>this is post request</h1>>');
+        }
         $view = $this->getView();
         $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
         $page = $pageRepository->getPage(8);
         $this->view->assign(self::SECTIONS, self::CONTACT_SECTIONS);
         $this->view->assign('page', $page);
         $this->view->assign('id', $this->request);
+
         return $this->htmlResponse($view->render());
     }
 
@@ -55,7 +61,7 @@ class HomeController extends AbstractController
         $view = $this->getView();
         $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
         $page = $pageRepository->getPage(9);
-        $this->view->assign(self::SECTIONS, ['projects']);
+        $this->view->assign(self::SECTIONS, ['projects', 'Call-to-action']);
         $this->view->assign('page', $page);
         $this->view->assign('id', $this->request);
         return $this->htmlResponse($view->render());
@@ -76,9 +82,10 @@ class HomeController extends AbstractController
         $this->view->assign('experiences', $this->qualificationRepository->getQualifications());
         $this->view->assign('educations', $this->qualificationRepository->getQualifications(QualificationsRepository::CATEGORY_EDUCATION));
 
-        $this->view->assign('skills', $this->skillsService->formatSkillsForDisplay($this->skillsRepository->getSkills()));
+        $this->view->assign('skills', $this->myWebsiteService->formatSkillsForDisplay($this->skillsRepository->getSkills()));
+        $this->view->assign('projects', $this->myWebsiteService->formatProjectsForDisplay($this->projectsRepository->getProjects()) );
 
-       // debugUtility::debug($this->skillsService->formatSkillsForDisplay($this->skillsRepository->getSkills()), 'test');
+       // debugUtility::debug($this->myWebsiteService->formatProjectsForDisplay($this->projectsRepository->getProjects()) , 'test');
 
         return $view;
     }

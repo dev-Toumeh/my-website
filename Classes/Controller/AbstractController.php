@@ -3,10 +3,11 @@
 namespace Toumeh\MyWebsite\Controller;
 
 
+use Toumeh\MyWebsite\Domain\Repository\ProjectsRepository;
 use Toumeh\MyWebsite\Domain\Repository\QualificationsRepository;
 use Toumeh\MyWebsite\Domain\Repository\SkillsRepository;
 use Toumeh\MyWebsite\Domain\Repository\UrlsRepository;
-use Toumeh\MyWebsite\Service\SkillsService;
+use Toumeh\MyWebsite\Service\MyWebsiteService;
 use \TYPO3\CMS\Extensionmanager\Controller\AbstractController as OriginalAbstractController;
 
 class AbstractController extends OriginalAbstractController
@@ -25,22 +26,24 @@ class AbstractController extends OriginalAbstractController
     protected UrlsRepository $urlsRepository;
     protected QualificationsRepository $qualificationRepository;
     protected SkillsRepository $skillsRepository;
-    protected SkillsService $skillsService;
-
+    protected MyWebsiteService $myWebsiteService;
+    protected ProjectsRepository $projectsRepository;
 
     public function injectRepositories(
         UrlsRepository           $urlsRepository,
         QualificationsRepository $qualificationRepository,
-        SkillsRepository         $skillsRepository
+        SkillsRepository         $skillsRepository,
+        ProjectsRepository $projectRepository
     ): void
     {
         $this->urlsRepository = $urlsRepository;
         $this->qualificationRepository = $qualificationRepository;
         $this->skillsRepository = $skillsRepository;
+        $this->projectsRepository = $projectRepository;
     }
 
-    public function injectServices(SkillsService $skillsService): void
+    public function injectServices(MyWebsiteService $myWebsiteService): void
     {
-        $this->skillsService = $skillsService;
+        $this->myWebsiteService = $myWebsiteService;
     }
 }
