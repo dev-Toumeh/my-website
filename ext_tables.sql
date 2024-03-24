@@ -21,3 +21,11 @@ CREATE TABLE tx_mywebsite_domain_model_skills
     category VARCHAR(20) DEFAULT '' NOT NULL,
     name VARCHAR(20) DEFAULT '' NOT NULL
 );
+
+CREATE TABLE tx_mywebsite_domain_model_projects
+(
+    name VARCHAR(20) DEFAULT '' NOT NULL,
+    image LONGBLOB NOT NULL,
+    description TEXT NOT NULL,
+    github_url VARCHAR(50) DEFAULT '' NOT NULL,
+);

@@ -2,6 +2,7 @@
 
 namespace Toumeh\MyWebsite\Service;
 
+use Toumeh\MyWebsite\Domain\Repository\ProjectsRepository;
 use Toumeh\MyWebsite\Domain\Repository\SkillsRepository;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
@@ -26,6 +27,23 @@ class SkillsService
         return $result;
     }
 
+    public function formatProjectsForDisplay(array|QueryResultInterface $projects): array
+    {
+        $result = [];
+        **/ @var */
+        foreach ($projects as $project) {
+         $result[] =
+             [
+                 ProjectsRepository::NAME => $project->getName(),
+
+            ];
+
+        }
+
+        return $result;
+    }
+
+
     private function appendToCategory(array &$categoryArray, string $skillName): void
     {
         static $groupSize = 3;
@@ -36,5 +54,7 @@ class SkillsService
             $categoryArray[] = [$skillName];
         }
     }
+
+
 
 }
