@@ -11732,3 +11732,7 @@ html {
     left: -2vw;
   }
 }
+
+.small-font {
+  font-size: 14px; /* or any other size */
+}

@@ -1,0 +1,61 @@
+<!-- Success Message, initially hidden -->
+<div id="submitSuccessMessage" class="alert alert-success d-none">
+    <div class="text-center">
+        <h4 class="alert-heading ">Success!</h4>
+        <p class="mb-0 small-font">Your message has been sent successfully. We will get back to you soon.</p>
+    </div>
+</div>
+
+<!-- Error Message, initially hidden -->
+<div id="submitErrorMessage" class="alert alert-danger d-none">
+    <div class="text-center">
+        <h4 class="alert-heading">Error!</h4>
+        <p class="mb-0 small-font"></p>
+    </div>
+</div>
+
+<f:form action="contact" controller="HomeController" pageUid="11" objectName="contact" enctype="multipart/form-data"
+    id="contactForm"    name="contactForm">
+    <!-- Name input-->
+    <div class="form-floating mb-3">
+        <f:form.textfield class="form-control" id="name" type="text" property="name" placeholder=" "
+                          required="required" additionalAttributes="{data-sb-validations: 'required'}"
+        />
+        <label for="name">Full name</label>
+        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+    </div>
+    <!-- Email address input-->
+    <div class="form-floating mb-3">
+        <f:form.textfield class="form-control" id="email" type="email" property="email" placeholder=" "
+                          required="required" additionalAttributes="{data-sb-validations: 'required,email'}"
+        />
+        <label for="email">Email address</label>
+        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+    </div>
+    <!-- Phone number input-->
+    <div class="form-floating mb-3">
+        <f:form.textfield class="form-control" id="phone" type="tel" name="contact[phone]" placeholder=" "
+                          required="required"
+                          pattern="(\+49|0049)[1-9]\d{6,10}"
+                          additionalAttributes="{data-sb-validations: 'required'}"
+        />
+        <label for="phone">Phone number (e.g., +49 123 4567890)</label>
+        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+        <div class="invalid-feedback" data-sb-feedback="phone:pattern">Please enter a valid German phone number starting with +49 or 0049.</div>
+    </div>
+
+    <!-- Message input-->
+    <div class="form-floating mb-3">
+        <f:form.textarea class="form-control" id="message" property="message" placeholder=" "
+                         style="height: 10rem" required="required"
+                         additionalAttributes="{data-sb-validations: 'required'}">
+        </f:form.textarea>
+        <label for="message">Message</label>
+        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+    </div>
+    <!-- Submit Button-->
+    <div class="d-grid">
+        <f:form.submit class="btn btn-primary btn-lg" id="submitButton" value="Submit"/>
+    </div>
+</f:form>
