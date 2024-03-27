@@ -7,3 +7,9 @@ ExtensionUtility::registerPlugin(
     'Index',
     'Active home Page'
 );
+
+ExtensionUtility::registerPlugin(
+    'Mywebsite',
+    'Contact',
+    'json response plugin'
+);

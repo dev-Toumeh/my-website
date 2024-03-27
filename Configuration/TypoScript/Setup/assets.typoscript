@@ -1,6 +1,4 @@
-
 # The assets included here icons, external CSS and JavaScript libraries and local resources
-
 page.shortcutIcon = EXT:mywebsite/Resources/Public/assets/favicon.ico
 
 page.meta {

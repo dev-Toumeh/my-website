@@ -14,3 +14,14 @@ ExtensionUtility::configurePlugin(
         Toumeh\MyWebsite\Controller\HomeController::class => 'index,resume,contact,projects',
     ]
 );
+
+ExtensionUtility::configurePlugin(
+    'Mywebsite',
+    'Contact',
+    [
+        Toumeh\MyWebsite\Controller\JsonController::class => 'json',
+    ],
+    [
+        Toumeh\MyWebsite\Controller\JsonController::class => 'json',
+    ]
+);

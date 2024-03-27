@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Toumeh\MyWebsite\Domain\Repository\QualificationsRepository;
 use Toumeh\MyWebsite\Domain\Repository\UrlsRepository;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -39,13 +40,9 @@ class HomeController extends AbstractController
 
     public function contactAction(): ResponseInterface
     {
-
         $method = $this->request->getMethod();
 
         // You can now check the request method and behave accordingly
-        if ($method === 'POST') {
-            return $this->htmlResponse('<h1>this is post request</h1>>');
-        }
         $view = $this->getView();
         $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
         $page = $pageRepository->getPage(8);
@@ -61,7 +58,7 @@ class HomeController extends AbstractController
         $view = $this->getView();
         $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
         $page = $pageRepository->getPage(9);
-        $this->view->assign(self::SECTIONS, ['projects', 'Call-to-action']);
+        $this->view->assign(self::SECTIONS, self::PROJECTS_SECTIONS);
         $this->view->assign('page', $page);
         $this->view->assign('id', $this->request);
         return $this->htmlResponse($view->render());
@@ -78,7 +75,7 @@ class HomeController extends AbstractController
         $this->view->assign('pages', $this->urlsRepository->getUrls());
         $this->view->assign('externUrls', $this->urlsRepository->getUrls(UrlsRepository::TYPE_EXTERNAL));
 
-        // resume view variables
+        // resume viewy variables
         $this->view->assign('experiences', $this->qualificationRepository->getQualifications());
         $this->view->assign('educations', $this->qualificationRepository->getQualifications(QualificationsRepository::CATEGORY_EDUCATION));
 
