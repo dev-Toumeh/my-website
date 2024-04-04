@@ -2,7 +2,8 @@
 
 ## Introduction
 
-- **Purpose:** This TYPO3 extension serves as a portfolio website, allowing users to showcase their work..
+- **Purpose:** This TYPO3 extension serves as a portfolio website, allowing users to showcase their work.
+- This extension was built on top of the following frontend repository https://github.com/StartBootstrap/startbootstrap-personal.git
 - **Version :** 1.0.0
 
 ## Installation
@@ -12,37 +13,46 @@
   - PHP >= 8.1.0 <= 8.3.99
   - Composer >= 2.1
 - **Installation Steps:**
-    1. Install TYPO3
-       1. Using DDEV 
-       2. Use my own Docker typo3 Development environment (Still in beta Version)
-    2. Add the extension using composer
-       1. DDEV
-            1. ddev composer config repositories.my-website vcs https://github.com/dev-Toumeh/typo3-Portfolio-extension
-            2. ddev composer require toumeh/my-website:^1.0
-       2. Docker or local Environment 
-           1. composer config repositories.my-website vcs https://github.com/dev-Toumeh/typo3-Portfolio-extension
-           2. composer require toumeh/my-website:^1.0
-    3. Clear cache 
-    4. After you installed the extension you can check it by Navigation to Admin Tools in typo3 backend Interface and than Extensions than type my-website into search section see the following image.
-    5. Create two pages: 'Home' and 'Contact'
+    - Install TYPO3
+        - Using DDEV
+        - Use my own Docker TYPO3 Development environment (Still in beta Version)
 
-        - In the 'Home' page, 
-          - add the 'Active Home Page Plugin'
+    - Add the extension using composer
+       1. DDEV
+            1. ```bash
+               ddev composer config repositories.my-website vcs https://github.com/dev-Toumeh/typo3-Portfolio-extension
+               ```
+            2. ```bash
+               ddev composer require toumeh/my-website:^1.0
+               ```
+       2. Docker or local Environment 
+           1. ```bash
+                composer config repositories.my-website vcs https://github.com/dev-Toumeh/typo3-Portfolio-extension
+               ```
+           2. ```bash
+                composer require toumeh/my-website:^1.0
+               ```
+    - Clear cache 
+    - After you installed the extension, you can check it by Navigation to Admin Tools in typo3 backend Interface and then Extensions then type my-website into a search section see the following image.
+    - Create two pages: 'Home' and 'Contact'
+
+       - In the 'Home' page, 
+         - add the 'Active Home Page Plugin'
           
-            ![Alt text](assets/home-plugin.png)
+           ![Alt text](assets/home-plugin.png)
           
-          - Your Segment should look like this
+         - Your Segment should look like this
           
-            ![Alt text](assets/home-segment.png) 
+           ![Alt text](assets/home-segment.png) 
           
-        - in Page 'Contact' 
-          - add the 'active json response plugin' 
+       - in Page 'Contact' 
+         - add the 'active json response plugin' 
           
-            ![Alt text](assets/json-plugin.png)
+           ![Alt text](assets/json-plugin.png)
           
-          - Your Segment should look like this
+         - Your Segment should look like this
           
-            ![Alt text](assets/json-segment.png)
+           ![Alt text](assets/json-segment.png)
           
 - **Configuration:**
     - add your GitHub page by going to list Module -> Create new Record -> Urls -> choice GitHub
@@ -56,15 +66,10 @@
 
     
 ## Troubleshooting
-
-
 ## FAQs
-
-- no Question Until now
+- NNo Question until now
 
 ## Changelog
-
-- [Keep a record of changes, versions, and updates]
 
 ## Contact and Support Information
 
