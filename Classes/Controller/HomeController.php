@@ -3,6 +3,7 @@
 namespace Toumeh\MyWebsite\Controller;
 
 
+use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Toumeh\MyWebsite\Domain\Repository\QualificationsRepository;
 use Toumeh\MyWebsite\Domain\Repository\UrlsRepository;
@@ -20,7 +21,7 @@ class HomeController extends AbstractController
             $this->view->assign(self::PAGES, $this->urlsRepository->getUrls());
             $this->view->assign(self::EXTERN_URLS, $this->urlsRepository->getUrls(UrlsRepository::TYPE_EXTERNAL));
             return $this->htmlResponse($view->render());
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             return $this->redirect(self::INDEX);
         }
@@ -33,7 +34,7 @@ class HomeController extends AbstractController
             $this->view->assign(self::EXPERIENCES, $this->qualificationRepository->getQualifications());
             $this->view->assign(self::EDUCATIONS, $this->qualificationRepository->getQualifications(QualificationsRepository::CATEGORY_EDUCATION));
             return $this->htmlResponse($view->render());
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             return $this->redirect(self::INDEX);
         }
@@ -45,7 +46,7 @@ class HomeController extends AbstractController
             $view = $this->getView();
             $this->view->assign(self::SKILLS, $this->myWebsiteService->formatSkillsForDisplay($this->skillsRepository->getSkills()));
             return $this->htmlResponse($view->render());
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             return $this->redirect(self::INDEX);
         }

@@ -12,7 +12,6 @@ use Toumeh\MyWebsite\Service\MyWebsiteService;
 use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
 use \TYPO3\CMS\Extensionmanager\Controller\AbstractController as OriginalAbstractController;
 
-
 class AbstractController extends OriginalAbstractController implements ConstantsInterface
 {
 
