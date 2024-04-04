@@ -32,6 +32,7 @@ interface ConstantsInterface
     // general
     public const string EXTBASE = 'extbase';
     public const string INDEX = 'index';
+    public const string HOME = 'home';
     public const string CONTACT = 'contact';
     public const string RESUME = 'resume';
     public const string PROJECTS = 'projects';
@@ -40,4 +41,11 @@ interface ConstantsInterface
     public const string EXPERIENCES = 'experiences';
     public const string EDUCATIONS = 'educations';
     public const string SKILLS = 'skills';
+
+    public const array PAGES_DATA = [
+        self::HOME => '/',
+        self::RESUME => '/resume',
+        self::PROJECTS => '/projects',
+        self::CONTACT => '/contact'
+    ];
 }

@@ -18,8 +18,6 @@ class HomeController extends AbstractController
     {
         try {
             $view = $this->getView();
-            $this->view->assign(self::PAGES, $this->urlsRepository->getUrls());
-            $this->view->assign(self::EXTERN_URLS, $this->urlsRepository->getUrls(UrlsRepository::TYPE_EXTERNAL));
             return $this->htmlResponse($view->render());
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
@@ -64,15 +62,15 @@ class HomeController extends AbstractController
         }
     }
 
-
     private function getView(): StandaloneView
     {
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplatePathAndFilename(self::TEMPLATE_PATH);
         $view->setLayoutRootPaths([self::LAYOUT_PATH]);
         $view->setPartialRootPaths([self::PARTIALS_PATH]);
-        $this->view->assign(self::PAGES, $this->urlsRepository->getUrls());
+        $this->view->assign(self::PAGES, self::PAGES_DATA);
         $this->view->assign(self::SECTIONS, self::ACTIONS_SECTIONS[$this->getControllerActionName()]);
+        $this->view->assign(self::EXTERN_URLS, $this->myWebsiteService->formatUrlsForDisplay($this->urlsRepository->getUrls()));
 
         return $view;
     }

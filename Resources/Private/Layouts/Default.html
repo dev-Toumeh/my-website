@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                     <f:for each="{pages}" as="page" key="key">
-                        <li class="nav-item"><a class="nav-link" href="{page.url}">{page.title}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{page}"><f:format.case mode="capital">{key}</f:format.case></a></li>
                     </f:for>
                 </ul>
             </div>
@@ -48,7 +48,7 @@
                 <span class="mx-1">&middot;</span>
                 <a class="small" href="#!">Terms</a>
                 <span class="mx-1">&middot;</span>
-                <a class="small" href="{pages.3.url}">Contact</a>
+                <a class="small" href="{pages.contact}">Contact</a>
             </div>
         </div>
     </div>

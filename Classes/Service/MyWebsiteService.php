@@ -6,6 +6,7 @@ use Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use Toumeh\MyWebsite\Domain\Model\Contacts;
 use Toumeh\MyWebsite\Domain\Model\Projects;
+use Toumeh\MyWebsite\Domain\Model\Urls;
 use Toumeh\MyWebsite\Domain\Repository\ProjectsRepository;
 use Toumeh\MyWebsite\Domain\Repository\SkillsRepository;
 use TYPO3\CMS\Core\Log\LogManager;
@@ -35,13 +36,23 @@ class MyWebsiteService
         return $result;
     }
 
+    public function formatUrlsForDisplay(QueryResultInterface|array $urls): array
+    {
+        $result = [];
+        /** @var Urls $url */
+        foreach ($urls as $url) {
+            $result[$url->getType()] = $url->getUrl();
+        }
+        return $result;
+    }
+
     public function getContactData(array $parsedBody): array
     {
         $contactModel = new Contacts();
         return $contactModel->getData($parsedBody['tx_mywebsite_index']['contact']);
     }
 
-    function sendEmail(array $contactData): void
+    public function sendEmail(array $contactData): void
     {
         $mail = new PHPMailer(true);
 

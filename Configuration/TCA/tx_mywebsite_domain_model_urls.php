@@ -3,8 +3,6 @@ return [
     'ctrl' => [
         'title' => 'Urls',
         'label' => 'url',
-        'label-alt' => 'title',
-        'label-alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'delete' => 'deleted',
@@ -12,7 +10,6 @@ return [
         'default_sortby' => 'label',
         'versioningWS' => true,
         'rootLevel' => 0,
-        'iconfile' => 'EXT:my-website/Resources/Public/Icons/urls.svg',
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -31,35 +28,26 @@ return [
     ],
     'columns' => [
         'url' => [
-            'label' => 'url',
+            'label' => 'URL',
             'config' => ['type' => 'input']
         ],
         'type' => [
-            'label' => 'type',
+            'label' => 'Type',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    [
-                        'label' => 'internal',
-                        'value' => 'internal',
-                    ],
-                    [
-                        'label' => 'external',
-                        'value' => 'external',
-                    ],
+                    ['GitHub URL', 'github'],
+                    ['Twitter URL', 'twitter'],
+                    ['LinkedIn URL', 'linkedin'],
                 ],
                 'size' => 6,
             ],
-        ],
-        'title' => [
-            'label' => 'title',
-            'config' => ['type' => 'input']
         ]
     ],
     'types' => [
         [
-            'showitem' => 'url, type, title'
+            'showitem' => 'url, type'
         ]
     ]
 ];
