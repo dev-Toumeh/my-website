@@ -2,7 +2,6 @@
 
 namespace Toumeh\MyWebsite\Controller;
 
-
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Toumeh\MyWebsite\Domain\Repository\QualificationsRepository;

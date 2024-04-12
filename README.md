@@ -54,7 +54,7 @@
     - add Resume Page fields Experiences, Education Technologies and skills by creating the relevant Records.
     - The same apply for Projects Page
     - adding the contact Email Page configuration needs from you to register on sendgrid.com and tha add your contact data inside the following page in the extension
-      Classes/Service/MyWebsiteService.php
+      Classes/Service/EmailService.php
       ![Alt text](assets/email-config.png)
     - **I'm currently working on integrating the extension with Typo3 SMTP functionalities, so the email would be adaptable directly from the Backend Interface, which will be available in the forthcoming update.**
 

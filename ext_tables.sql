@@ -24,7 +24,7 @@ CREATE TABLE tx_mywebsite_domain_model_skills
 CREATE TABLE tx_mywebsite_domain_model_projects
 (
     name VARCHAR(20) DEFAULT '' NOT NULL,
-    image LONGBLOB NOT NULL,
+    image LONGBLOB DEFAULT '',
     description TEXT NOT NULL,
     github_url VARCHAR(50) DEFAULT '' NOT NULL,
 );

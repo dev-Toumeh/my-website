@@ -10,7 +10,8 @@
     }
   ],
   "require": {
-    "typo3/cms-fluid-styled-content": "^12.4.0"
+    "typo3/cms-fluid-styled-content": "^12.4.0",
+    "phpmailer/phpmailer": "^6.9.1"
   },
   "extra": {
     "typo3/cms": {

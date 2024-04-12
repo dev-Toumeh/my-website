@@ -9,9 +9,9 @@ use Toumeh\MyWebsite\Domain\Repository\QualificationsRepository;
 use Toumeh\MyWebsite\Domain\Repository\SkillsRepository;
 use Toumeh\MyWebsite\Domain\Repository\UrlsRepository;
 use Toumeh\MyWebsite\Service\EmailService;
-use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
-use \TYPO3\CMS\Extensionmanager\Controller\AbstractController as OriginalAbstractController;
+use TYPO3\CMS\Extensionmanager\Controller\AbstractController as OriginalAbstractController;
+
 
 class AbstractController extends OriginalAbstractController implements ConstantsInterface
 {
