@@ -1,3 +1,4 @@
+{namespace vh=Toumeh\MyWebsite\ViewHelpers}
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 
@@ -10,7 +11,7 @@
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-11 col-xl-9 col-xxl-8">
-                    <f:for each="{projects}" as="project" iteration="iterator">
+                    <f:for each="{vh:projects(projects: projects)}" as="project" iteration="iterator">
                         <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
                             <div class="card-body p-0">
                                 <div class="d-flex align-items-center">
@@ -18,7 +19,6 @@
                                         <h2 class="fw-bolder">{project.name}</h2>
                                         <p>{project.description}</p>
                                     </div>
-                                    <f:image class="img-fluid ms-auto" image="{project.image}"/>
                                 </div>
                             </div>
                         </div>

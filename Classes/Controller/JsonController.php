@@ -12,8 +12,8 @@ class JsonController extends AbstractController
     {
         try {
             $request = $this->request;
-            $contactData = $this->myWebsiteService->getContactData($request->getParsedBody());
-            $this->myWebsiteService->sendEmail($contactData);
+            $contactData = $this->getContactData($request->getParsedBody());
+            $this->emailService->sendEmail($contactData);
             $resul = [self::SUCCESS => true, self::MESSAGE => self::SUCCESS_MESSAGE];
             $this->logger->info('someone tried to contacted you');
 

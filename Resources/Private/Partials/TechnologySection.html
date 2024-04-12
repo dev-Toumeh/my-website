@@ -1,33 +1,36 @@
+<!-- SkillsSection Partial -->
 <div class="mb-5">
     <div class="d-flex align-items-center mb-4">
         <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
-            <i class="bi bi-tools"></i></div>
-        <h3 class="fw-bolder mb-0"><span
-                class="text-gradient d-inline">Technologies</span></h3>
+            <i class="bi bi-tools"></i>
+        </div>
+        <h3 class="fw-bolder mb-0">
+            <span class="text-gradient d-inline">{skillType}</span>
+        </h3>
     </div>
-    <f:for each="{skills.technology}" as="section" iteration="out-iterator">
-          <f:if condition="{out-iterator.isLast}">
-              <f:then>
-                  <div class="row row-cols-1 row-cols-md-3">
-              </f:then>
-              <f:else>
-                  <div class="row row-cols-1 row-cols-md-3 mb-4">
-              </f:else>
-          </f:if>
-                     <f:for each="{section}" as="one-technology" iteration="in-iterator">
-                            <f:if condition="{in-iterator.isLast}">
-                                <f:then>
-                                    <div class="col">
-                                </f:then>
-                                <f:else>
-                                    <div class="col mb-4 mb-md-0">
-                                </f:else>
-                            </f:if>
-                                        <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">
-                                            {one-technology}
-                                        </div>
-                                    </div>
-                     </f:for>
-                  </div>
-    </f:for>
+    <f:for each="{skills}" as="section" iteration="out-iterator">
+        <f:if condition="{out-iterator.isLast}">
+            <f:then>
+                <div class="row row-cols-1 row-cols-md-3">
+            </f:then>
+            <f:else>
+                <div class="row row-cols-1 row-cols-md-3 mb-4">
+            </f:else>
+        </f:if>
+        <f:for each="{section}" as="skill" iteration="in-iterator">
+            <f:if condition="{in-iterator.isLast}">
+                <f:then>
+                    <div class="col">
+                </f:then>
+                <f:else>
+                    <div class="col mb-4 mb-md-0">
+                </f:else>
+            </f:if>
+            <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">
+                {skill}
+            </div>
+</div> <!-- Close column div -->
+</f:for>
+</div> <!-- Close row div -->
+</f:for>
 </div>

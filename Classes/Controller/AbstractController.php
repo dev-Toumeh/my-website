@@ -2,15 +2,16 @@
 
 namespace Toumeh\MyWebsite\Controller;
 
-
 use Psr\Log\LoggerInterface;
+use Toumeh\MyWebsite\Domain\Model\Contacts;
 use Toumeh\MyWebsite\Domain\Repository\ProjectsRepository;
 use Toumeh\MyWebsite\Domain\Repository\QualificationsRepository;
 use Toumeh\MyWebsite\Domain\Repository\SkillsRepository;
 use Toumeh\MyWebsite\Domain\Repository\UrlsRepository;
-use Toumeh\MyWebsite\Service\MyWebsiteService;
+use Toumeh\MyWebsite\Service\EmailService;
 use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
-use \TYPO3\CMS\Extensionmanager\Controller\AbstractController as OriginalAbstractController;
+use TYPO3\CMS\Extensionmanager\Controller\AbstractController as OriginalAbstractController;
+
 
 class AbstractController extends OriginalAbstractController implements ConstantsInterface
 {
@@ -21,7 +22,7 @@ class AbstractController extends OriginalAbstractController implements Constants
     protected ProjectsRepository $projectsRepository;
 
     // services
-    protected MyWebsiteService $myWebsiteService;
+    protected EmailService $emailService;
 
     public function __construct(
         protected LoggerInterface          $logger,
@@ -40,13 +41,19 @@ class AbstractController extends OriginalAbstractController implements Constants
         $this->projectsRepository = $projectRepository;
     }
 
-    public function injectServices(MyWebsiteService $myWebsiteService): void
+    public function injectServices(EmailService $emailService): void
     {
-        $this->myWebsiteService = $myWebsiteService;
+        $this->emailService = $emailService;
     }
 
     protected function getControllerActionName(): string
     {
         return $this->request->getAttributes()[self::EXTBASE]->getControllerActionName();
+    }
+
+    public function getContactData(array $parsedBody): array
+    {
+        $contactModel = new Contacts();
+        return $contactModel->getData($parsedBody['tx_mywebsite_index']['contact']);
     }
 }
