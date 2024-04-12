@@ -1,3 +1,4 @@
+{namespace vh=Toumeh\MyWebsite\ViewHelpers}
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 
@@ -181,7 +182,7 @@
                             laborum.
                         </p>
                         <div class="d-flex justify-content-center fs-2 gap-4">
-                            <f:for each="{externUrls}" as="url" key="key">
+                            <f:for each="{vh:urls(externUrls: externUrls)}" as="url" key="key">
                                 <f:if condition="{key} == github">
                                     <a class="text-gradient" href="{url}"><i class="bi bi-github"></i></a>
                                 </f:if>

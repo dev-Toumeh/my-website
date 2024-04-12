@@ -6,7 +6,6 @@ namespace Toumeh\MyWebsite\Controller;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Toumeh\MyWebsite\Domain\Repository\QualificationsRepository;
-use Toumeh\MyWebsite\Domain\Repository\UrlsRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
@@ -29,6 +28,7 @@ class HomeController extends AbstractController
     {
         try {
             $view = $this->getView();
+            $this->view->assign(self::SKILLS, $this->skillsRepository->getSkills());
             $this->view->assign(self::EXPERIENCES, $this->qualificationRepository->getQualifications());
             $this->view->assign(self::EDUCATIONS, $this->qualificationRepository->getQualifications(QualificationsRepository::CATEGORY_EDUCATION));
             return $this->htmlResponse($view->render());
@@ -42,7 +42,6 @@ class HomeController extends AbstractController
     {
         try {
             $view = $this->getView();
-            $this->view->assign(self::SKILLS, $this->myWebsiteService->formatSkillsForDisplay($this->skillsRepository->getSkills()));
             return $this->htmlResponse($view->render());
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
@@ -54,7 +53,7 @@ class HomeController extends AbstractController
     {
         try {
             $view = $this->getView();
-            $this->view->assign(self::PROJECTS, $this->myWebsiteService->formatProjectsForDisplay($this->projectsRepository->getProjects()));
+            $this->view->assign(self::PROJECTS, $this->projectsRepository->getProjects());
             return $this->htmlResponse($view->render());
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
@@ -70,7 +69,7 @@ class HomeController extends AbstractController
         $view->setPartialRootPaths([self::PARTIALS_PATH]);
         $this->view->assign(self::PAGES, self::PAGES_DATA);
         $this->view->assign(self::SECTIONS, self::ACTIONS_SECTIONS[$this->getControllerActionName()]);
-        $this->view->assign(self::EXTERN_URLS, $this->myWebsiteService->formatUrlsForDisplay($this->urlsRepository->getUrls()));
+        $this->view->assign(self::EXTERN_URLS, $this->urlsRepository->getUrls());
 
         return $view;
     }

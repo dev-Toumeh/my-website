@@ -1,3 +1,4 @@
+{namespace vh=Toumeh\MyWebsite\ViewHelpers}
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 
@@ -84,10 +85,12 @@
                     <!-- Skillset Card-->
                     <div class="card shadow border-0 rounded-4 mb-5">
                         <div class="card-body p-5">
-                            <!-- Professional skills list-->
-                            <f:render partial="TechnologySection" arguments="{skills: skills}" />
-                            <!-- Languages list-->
-                            <f:render partial="LanguageSection" arguments="{skills: skills}" />
+                            <f:variable name="technologySkills" value="{vh:skills(skills: skills)}" />
+                            <f:variable name="languageSkills" value="{vh:skills(skills: skills)}" />
+                            <!-- Professional skills list -->
+                            <f:render partial="TechnologySection" arguments="{skills: technologySkills.technology, skillType: 'Technologies'}" />
+                            <!-- Languages list -->
+                            <f:render partial="LanguageSection" arguments="{skills: languageSkills.language, skillType: 'Languages'}" />
                         </div>
                     </div>
                 </section>
