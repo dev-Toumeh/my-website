@@ -1,7 +1,7 @@
 # TYPO3 Extension for Portfolio Website
 - **Purpose:** Enables users to showcase their work via a portfolio website.
 - **Based On:** [StartBootstrap Personal Repository](https://github.com/StartBootstrap/startbootstrap-personal.git)
-- **Version:** 1.0.0
+- **Version:** dev
 ## Installation
 - **Requirements:**
   - Compatible with TYPO3 versions 12.4.0^ (I didn't test it with Version 13)
